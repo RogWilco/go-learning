@@ -23,6 +23,21 @@ func TestSearch(t *testing.T) {
 	})
 }
 
+func TestAdd(t *testing.T) {
+	dict := Dictionary{}
+
+	dict.Add("test", "this is just another test")
+
+	got, err := dict.Search("test")
+	want := "this is just another test"
+
+	if err != nil {
+		t.Fatal("unexpected error")
+	}
+
+	assertStrings(t, got, want)
+}
+
 func assertStrings(t testing.TB, got, want string) {
 	t.Helper()
 
